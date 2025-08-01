@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Aplicação Web</title>
+    
+    <!-- MaterializeCSS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="blue darken-3">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">
+                <i class="material-icons left">security</i>
+                Sistema de Login
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m8 l6 offset-m2 offset-l3">
+                <div class="card-panel z-depth-4" style="margin-top: 50px;">
+                    <h4 class="center-align blue-text text-darken-3">
+                        <i class="material-icons large">account_circle</i>
+                        <br>Login
+                    </h4>
+                    
+                    <!-- Login Form -->
+                    <form id="loginForm">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">person</i>
+                                <input id="username" type="text" class="validate" required>
+                                <label for="username">Usuário</label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input id="password" type="password" class="validate" required>
+                                <label for="password">Senha</label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button id="login-button" class="btn waves-effect waves-light blue darken-3" type="submit">
+                                    Entrar
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <!-- Forgot Password Link -->
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a href="#forgotPasswordModal" class="modal-trigger blue-text text-darken-3">
+                                <i class="material-icons tiny">help</i>
+                                Esqueci minha senha
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Status Messages -->
+                    <div id="statusMessage" class="row" style="display: none;">
+                        <div class="col s12">
+                            <div id="message-area" class="card-panel"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content card-panel" style="margin: 0; border-radius: 15px;">
+            <h4 class="center-align blue-text text-darken-3">
+                <i class="material-icons large">email</i>
+                <br>Recuperar Senha
+            </h4>
+            <p class="center-align grey-text">Digite seu email para receber um lembrete de senha</p>
+            <form id="forgotPasswordForm">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">email</i>
+                        <input id="email" type="email" class="validate" required>
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+            </form>
+            <div class="row" style="margin-top: 30px;">
+                <div class="col s12 center-align">
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat" style="margin-right: 10px;">
+                        Cancelar
+                    </a>
+                    <button id="sendPasswordReminder" class="waves-effect waves-light btn blue darken-3">
+                        Enviar Lembrete
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MaterializeCSS JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="/script.js"></script>
+</body>
+</html> 
