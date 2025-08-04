@@ -1,23 +1,21 @@
-# Desafio 4 - Aplicação Web de Login
+# Aplicação Web de Login
 
-## Descrição
-
-Esta é uma aplicação web moderna que consome a API de login desenvolvida no Desafio 3. A aplicação oferece uma interface elegante e responsiva para autenticação de usuários, utilizando as tecnologias solicitadas.
+Esta é uma aplicação web que consome a API de login de estudo desenvolvida e disponibilizada no repositório https://github.com/Karen-fm/API-LOGIN.git. A aplicação oferece uma interface elegante e responsiva para autenticação de usuários.
 
 ## Tecnologias Utilizadas
 
-- **HTML5** - Estrutura da página
-- **CSS3** - Estilização personalizada
-- **JavaScript (ES6+)** - Lógica da aplicação
+- **HTML** - Estrutura da página
+- **CSS** - Estilização personalizada
+- **JavaScript** - Lógica da aplicação
 - **Express.js** - Servidor web
 - **MaterializeCSS** - Framework de UI/UX
-- **Cypress** - Testes automatizados (preparado para a segunda parte)
+- **Cypress** - Testes automatizados
 
 ## Como Executar
 
 ### Pré-requisitos
 
-1. **API do Desafio 3** deve estar rodando na porta 3000
+1. **API LOGIN** deve estar rodando na porta 3000
 2. **Node.js** instalado (versão 14 ou superior)
 
 ### Passos para Execução
@@ -28,23 +26,54 @@ Esta é uma aplicação web moderna que consome a API de login desenvolvida no D
    npm install
    ```
 
-2. **Iniciar a API do Desafio 3:**
+2. **Iniciar a API LOGIN**
 
    ```bash
-   cd ../Desafio 3/API-LOGIN
-   npm install
+   cd [nome-do-seu-diretorio-da-API]/API-LOGIN
    node index.js
    ```
 
-3. **Em outro terminal, iniciar a aplicação web:**
+3. **Em outro terminal, iniciar a aplicação web**
 
    ```bash
-   cd Desafio 4
+   cd [nome-do-seu-diretorio-da-aplicacao-web]
    npm start
    ```
 
 4. **Acessar a aplicação:**
+
    - Abra o navegador e vá para: `http://localhost:3001`
+
+5. **Em outro terminal, executar os testes automatizados**
+
+```bash
+   cd [nome-do-seu-diretorio-da-aplicacao-web]
+   npx cypress open
+```
+
+- Ou para execução em modo headless:
+
+```bash
+npx cypress run
+```
+
+## Autores
+
+**Diego Santos**
+
+**Karen Machado**
+
+**Viviane Prestes**
+
+## Testes e Cobertura
+
+| Teste                               | Cobertura                                             |
+| ----------------------------------- | ----------------------------------------------------- |
+| `1-login.sucesso.cy.js`             | Testa login com credenciais válidas                   |
+| `2-login.invalido.cy.js`            | Testa cenários de falha no login                      |
+| `3-login-campos-obrigatorios.cy.js` | Testa validação de campos obrigatórios                |
+| `4-lembrar-senha.cy.js`             | Testa funcionalidade de lembrar senha por email       |
+| `5-bloqueio-tres-tentativas.cy.js`  | Testa bloqueio automático após 3 tentativas inválidas |
 
 ## Funcionalidades
 
@@ -53,13 +82,11 @@ Esta é uma aplicação web moderna que consome a API de login desenvolvida no D
 - Formulário de login com validação
 - Integração com a API de autenticação
 - Feedback visual de sucesso/erro
-- Estado de loading durante requisições
 
 ### Bloqueio por Tentativas
 
 - Sistema de bloqueio após 3 tentativas falhadas
-- Mensagens informativas sobre tentativas restantes
-- Reset automático após login bem-sucedido
+- O desbloqueio do usuário só ocorre ao reiniciar o servidor da API, pois todos os dados são armazenados em memória.
 
 ### Recuperação de Senha
 
@@ -78,14 +105,31 @@ Esta é uma aplicação web moderna que consome a API de login desenvolvida no D
 
 ```
 Desafio 4/
+├── cypress/
+│   ├── downloads/
+│   ├── e2e/
+│   │   ├── 1-login.sucesso.cy.js
+│   │   ├── 2-login.invalido.cy.js
+│   │   ├── 3-login-campos-obrigatorios.cy.js
+│   │   ├── 4-lembrar-senha.cy.js
+│   │   └── 5-bloqueio-tres-tentativas.cy.js
+│   ├── fixtures/
+│   │   └── example.json
+│   ├── screenshots/
+│   └── support/
+│       ├── commands.js
+│       └── e2e.js
+├── node_modules/
 ├── public/
-│   ├── style.css          # Estilos personalizados
-│   └── script.js          # Lógica da aplicação
+│   ├── script.js
+│   └── style.css
 ├── views/
-│   └── index.html         # Página principal
-├── server.js              # Servidor Express.js
-├── package.json           # Dependências e scripts
-└── README.md             # Documentação
+├── .gitignore
+├── cypress.config.js
+├── package-lock.json
+├── package.json
+├── README.md
+└── server.js
 ```
 
 ## Dados de Teste
@@ -104,10 +148,16 @@ A aplicação verifica automaticamente se a API está acessível e mostra avisos
 
 ### Reset de Tentativas
 
-Para testes, você pode usar no console do navegador:
+Para testes, você deverá reiniciar a API do Desafio 3:
 
-```javascript
-resetAttempts();
+1. **No terminal onde a API está rodando:** Pressione `Ctrl + C` para parar o servidor
+2. **Reinicie a API:** Execute `node index.js` no diretório da API
+3. **Isso resetará o contador de tentativas** pois os dados são armazenados em memória
+
+```bash
+# No terminal da API Login
+Ctrl + C  # Para parar o servidor
+node index.js  # Para reiniciar
 ```
 
 ### Logs de Debug
@@ -120,18 +170,16 @@ Verifique o console do navegador para logs detalhados sobre:
 
 ## Status Atual
 
-### **Primeira Parte - Aplicação Web (CONCLUÍDA)**
+### **Primeira Parte - Aplicação Web**
 
 - Interface web moderna com MaterializeCSS
-- Integração completa com a API do Desafio 3
+- Integração completa com a API LOGIN
 - Funcionalidades de login e recuperação de senha
 - Design responsivo e UX otimizada
 
-### **Segunda Parte - Testes Cypress (EM ANDAMENTO)**
+### **Segunda Parte - Testes Cypress**
 
-- Teste de bloqueio após 3 tentativas (API)
-- Testes E2E da interface web (6 cenários)
-- Preparação para os 4 cenários específicos do Desafio 3
+- Testes E2E da interface web (5 cenários implementados)
 
 ### **Cenários de Teste Implementados:**
 
@@ -139,8 +187,7 @@ Verifique o console do navegador para logs detalhados sobre:
 2. Login com credenciais inválidas
 3. Bloqueio após 3 tentativas inválidas
 4. Validação de campos obrigatórios
-5. Modal de recuperação de senha
-6. Recuperação de senha com email válido/inválido
+5. Recuperação de senha com email válido/inválido
 
 ## Suporte
 
@@ -153,4 +200,4 @@ Se encontrar problemas:
 
 ---
 
-**Desenvolvido para o Desafio 4**
+**Essa aplicação web foi desenvolvida para estudo da Mentoria 2.0 de Teste de Software.**
